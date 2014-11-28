@@ -1,17 +1,18 @@
 
-    function ShowToolTip(names) {
-        var groupEmailPopupTemplate = '<div id="ui-tooltip-7" class="ui-tooltip qtip ui-helper-reset ui-tooltip-medium ui-tooltip-shadow ui-tooltip-rounded ui-tooltip-pos-tr ui-widget ui-tooltip-focus" tracking="false" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="ui-tooltip-7-content" aria-hidden="false" style="width: 280px; z-index: 15001; top: 191px; left: 372.087890625px; opacity: 1; display: block;"><div class="ui-tooltip-tip" style="border: 0px !important; height: 22px; width: 22px; top: 4px; right: -21px; background-color: transparent !important;"><canvas style="border: 0px !important; background-color: transparent !important;" height="22" width="22"></canvas></div><div class="ui-tooltip-content ui-widget-content" id="ui-tooltip-7-content" aria-atomic="true"><div class="emailGroupLinkPopup" style="display: block;">   <div class="emailGroupLinkPopupTitle">    <span>Copy all Elders</span>   </div>   <div style="" class="emailGroupLinkPopupDescription">       </div>   <div class="emailGroupLinkPopupRadioBar">       </div>    <div class="emailGroupLinkPopupList" id="EldersgroupNamelList"></div>   <div class="buttonBar" style="margin-right:auto; margin-left:auto; text-align:center; width:220px; padding:0px 20px 10px 20px">    <button id="eldersSelectAllGroupNamePopup">Select All</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <button id="elderscloseGroupNamePopup" class="emailGroupLinkPopupButtonBar">Done</button>   </div>  </div></div></div>';
+    function BindNamesToolTip(names) {
+        var groupNamePopupTemplate = $("#multipleNameDialog").tmpl({
+        commaList: names.toString(),
+    });
         var control = $('#extractNamesGroupLink_Elders');
         control.qtip({
             content : {
-                text : groupEmailPopupTemplate
+                text : groupNamePopupTemplate
             },
             hide : false,
             events : {
                 // Hide the tooltip when the close buttons in the dialogue is clicked
                 render : function (event, api) {
                     // Inject names
-                    $("#EldersgroupNamelList").html(names.toString());
                     $("#elderscloseGroupNamePopup").click(api.destroy);
                     //listItemELDER_EldersgroupNamelList
                     $("#eldersSelectAllGroupNamePopup").click(function() {
@@ -64,9 +65,12 @@
         });
 
     }
+    // Inject new dialog
+    $("#multipleEmailDialog").after('<script id="multipleNameDialog" type="text/x-query-tmpl"> <div class="emailGroupLinkPopup"> <div class="emailGroupLinkPopupTitle"> <span>Copy all Elders</span> </div> <div style="" class="emailGroupLinkPopupDescription"><span id="titleText">${gen.getMsg().roster.email.popup_directions}</span></div><div class="emailGroupLinkPopupList" id="EldersgroupNamelList" class="">${commaList}</div><div class="buttonBar" style="margin-right:auto; margin-left:auto; text-align:center; width:220px; padding:0px 20px 10px 20px"><button id="eldersSelectAllGroupNamePopup">${gen.getMsg().roster.email.selectAll}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="eldersCloseGroupNamePopup" class="emailGroupLinkPopupButtonBar">${gen.getMsg().roster.email.done}</button></div></div></script>');
 
     // Inject new link
     $("#emailGroupLink_Elders").after('<div id="emailGroupdiv">    <a id="extractNamesGroupLink_Elders" href="#" class="emailAddress" aria-describedby="ui-tooltip-4">Copy all Elders . . .</a>   </div>');
+
 
     // Extract names
     var namesRaw = $('.rosterName'),
@@ -75,6 +79,8 @@
         namesExtracted[index] = $( this ).text();
     });
 
-
     // Render tool tip
-    ShowToolTip(namesExtracted);
+    BindNamesToolTip(namesExtracted);
+
+
+
