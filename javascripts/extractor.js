@@ -36,8 +36,8 @@
                 }
             },
             position : {
-                my : "top left",
-                at : "bottom right",
+                my : "top right",
+                at : "bottom left",
                 target : 'event',
                 adjust : {
                     screen : true,
