@@ -13,7 +13,10 @@
                 // Hide the tooltip when the close buttons in the dialogue is clicked
                 render : function (event, api) {
 
-                    control.qtip("destroy");
+                    $("#eldersCloseGroupNamePopup").click(function() {
+                        control.qtip("destroy");
+                    });
+
 
                     $("#eldersSelectAllGroupNamePopup").click(function() {
                         var element = $("#EldersgroupNamelList");
