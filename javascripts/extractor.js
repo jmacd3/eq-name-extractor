@@ -12,9 +12,9 @@
             events : {
                 // Hide the tooltip when the close buttons in the dialogue is clicked
                 render : function (event, api) {
-                    // Inject names
+                    console.log(api);
                     $("#elderscloseGroupNamePopup").click(api.destroy);
-                    //listItemELDER_EldersgroupNamelList
+
                     $("#eldersSelectAllGroupNamePopup").click(function() {
                         var element = $("#listItemELDER_EldersgroupNamelList");
 
@@ -66,10 +66,10 @@
 
     }
     // Inject new dialog
-    $("#multipleEmailDialog").after('<script id="multipleNameDialog" type="text/x-query-tmpl"> <div class="emailGroupLinkPopup"> <div class="emailGroupLinkPopupTitle"> <span>Copy all Elders</span> </div> <div style="" class="emailGroupLinkPopupDescription"><span id="titleText">${gen.getMsg().roster.email.popup_directions}</span></div><div class="emailGroupLinkPopupList" id="EldersgroupNamelList" class="">${commaList}</div><div class="buttonBar" style="margin-right:auto; margin-left:auto; text-align:center; width:220px; padding:0px 20px 10px 20px"><button id="eldersSelectAllGroupNamePopup">${gen.getMsg().roster.email.selectAll}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="eldersCloseGroupNamePopup" class="emailGroupLinkPopupButtonBar">${gen.getMsg().roster.email.done}</button></div></div></script>');
+    $("#multipleEmailDialog").after('<script id="multipleNameDialog" type="text/x-query-tmpl"> <div class="emailGroupLinkPopup"> <div class="emailGroupLinkPopupTitle"> <span>Copy all Elders Names</span> </div> <div style="" class="emailGroupLinkPopupDescription"></div><div class="emailGroupLinkPopupList" id="EldersgroupNamelList" class="">${commaList}</div><div class="buttonBar" style="margin-right:auto; margin-left:auto; text-align:center; width:220px; padding:0px 20px 10px 20px"><button id="eldersSelectAllGroupNamePopup">${gen.getMsg().roster.email.selectAll}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="eldersCloseGroupNamePopup" class="emailGroupLinkPopupButtonBar">${gen.getMsg().roster.email.done}</button></div></div></script>');
 
     // Inject new link
-    $("#emailGroupLink_Elders").after('<div id="emailGroupdiv">    <a id="extractNamesGroupLink_Elders" href="#" class="emailAddress" aria-describedby="ui-tooltip-4">Copy all Elders . . .</a>   </div>');
+    $("#emailGroupLink_Elders").after('<div id="emailGroupdiv">    <a id="extractNamesGroupLink_Elders" href="#" class="emailAddress" aria-describedby="ui-tooltip-4">Copy Elders Names . . .</a>   </div>');
 
 
     // Extract names
