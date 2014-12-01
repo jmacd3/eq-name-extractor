@@ -1,7 +1,7 @@
 
     function BindNamesToolTip(names) {
         var groupNamePopupTemplate = $("#multipleNameDialog").tmpl({
-        commaList: names.join("<br> "),
+        commaList: names.join("\n "),
     });
         var control = $('#extractNamesGroupLink_Elders');
         control.qtip({
@@ -13,10 +13,7 @@
                 // Hide the tooltip when the close buttons in the dialogue is clicked
                 render : function (event, api) {
 
-                    $("#eldersCloseGroupNamePopup").click(function() {
-                        console.log(api);
-                        api.destroy;
-                    });
+                    control.qtip("destroy");
 
                     $("#eldersSelectAllGroupNamePopup").click(function() {
                         var element = $("#EldersgroupNamelList");
