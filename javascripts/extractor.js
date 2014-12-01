@@ -1,7 +1,7 @@
 
     function BindNamesToolTip(names) {
         var groupNamePopupTemplate = $("#multipleNameDialog").tmpl({
-        commaList: names.join('\n '),
+        commaList: names.join('\n' + document.createElement('br')),
     });
         var control = $('#extractNamesGroupLink_Elders');
         control.qtip({
