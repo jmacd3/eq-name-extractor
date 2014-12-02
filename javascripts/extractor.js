@@ -1,7 +1,10 @@
 
     function BindNamesToolTip(names) {
-        var groupNamePopupTemplate = $("#multipleNameDialog").tmpl({});
+        var groupNamePopupTemplate = $("#multipleNameDialog");
+        // Inject names
+        $(groupNamePopupTemplate).find("#EldersgroupNamelList").html(names.join('\n <br>'));
         var control = $('#extractNamesGroupLink_Elders');
+
         control.qtip({
             content : {
                 text : groupNamePopupTemplate
@@ -79,8 +82,7 @@
         namesExtracted[index] = $( this ).text();
     });
 
-    // Inject names
-    $("#EldersgroupNamelList").html(namesExtracted.join('\n <br>')  );
+
 
     // Render tool tip
     BindNamesToolTip(namesExtracted);
