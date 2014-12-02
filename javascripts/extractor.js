@@ -1,13 +1,13 @@
 
     function BindNamesToolTip(names) {
-        var groupNamePopupTemplate = $("#multipleNameDialog");
+        var groupNamePopupTemplate = $("#multipleNameDialog").tmpl({});
         // Inject names
         $(groupNamePopupTemplate).find("#EldersgroupNamelList").html(names.join('\n <br>'));
         var control = $('#extractNamesGroupLink_Elders');
 
         control.qtip({
             content : {
-                text : groupNamePopupTemplate.html()
+                text : groupNamePopupTemplate
             },
             hide : false,
             events : {
