@@ -1,8 +1,6 @@
 
     function BindNamesToolTip(names) {
-        var groupNamePopupTemplate = $("#multipleNameDialog").tmpl({
-            commaList: $("#EldersgroupNamelList").html(names.join('\n <br>')  ).html()
-        });
+        var groupNamePopupTemplate = $("#multipleNameDialog").tmpl({});
         var control = $('#extractNamesGroupLink_Elders');
         control.qtip({
             content : {
@@ -67,12 +65,12 @@
         });
 
     }
+
     // Inject new dialog
-    $("#multipleEmailDialog").after('<script id="multipleNameDialog" type="text/x-query-tmpl"> <div class="emailGroupLinkPopup"> <div class="emailGroupLinkPopupTitle"> <span>Copy all Elders Names</span> </div> <div style="" class="emailGroupLinkPopupDescription"></div><div class="emailGroupLinkPopupList" id="EldersgroupNamelList" class="">${commaList}</div><div class="buttonBar" style="margin-right:auto; margin-left:auto; text-align:center; width:220px; padding:0px 20px 10px 20px"><button id="eldersSelectAllGroupNamePopup">${gen.getMsg().roster.email.selectAll}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="eldersCloseGroupNamePopup" class="emailGroupLinkPopupButtonBar">${gen.getMsg().roster.email.done}</button></div></div></script>');
+    $("#multipleEmailDialog").after('<script id="multipleNameDialog" type="text/x-query-tmpl"> <div class="emailGroupLinkPopup"> <div class="emailGroupLinkPopupTitle"> <span>Copy all Elders Names</span> </div> <div style="" class="emailGroupLinkPopupDescription"></div><div class="emailGroupLinkPopupList" id="EldersgroupNamelList" class=""></div><div class="buttonBar" style="margin-right:auto; margin-left:auto; text-align:center; width:220px; padding:0px 20px 10px 20px"><button id="eldersSelectAllGroupNamePopup">${gen.getMsg().roster.email.selectAll}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="eldersCloseGroupNamePopup" class="emailGroupLinkPopupButtonBar">${gen.getMsg().roster.email.done}</button></div></div></script>');
 
     // Inject new link
     $("#emailGroupLink_Elders").after('<div id="emailGroupdiv"><a id="extractNamesGroupLink_Elders" href="#" class="emailAddress" aria-describedby="ui-tooltip-4">Copy Elders Names . . .</a>   </div>');
-
 
     // Extract names
     var namesRaw = $('.rosterName'),
@@ -80,6 +78,9 @@
     namesRaw.each(function( index ) {
         namesExtracted[index] = $( this ).text();
     });
+
+    // Inject names
+    $("#EldersgroupNamelList").html(namesExtracted.join('\n <br>')  );
 
     // Render tool tip
     BindNamesToolTip(namesExtracted);
