@@ -73,7 +73,7 @@
     $("#multipleEmailDialog").after('<script id="multipleNameDialog" type="text/x-query-tmpl"> <div class="emailGroupLinkPopup"> <div class="emailGroupLinkPopupTitle"> <span>Copy all Elders Names</span> </div> <div style="" class="emailGroupLinkPopupDescription"></div><div class="emailGroupLinkPopupList" id="EldersgroupNamelList" class=""></div><div class="buttonBar" style="margin-right:auto; margin-left:auto; text-align:center; width:220px; padding:0px 20px 10px 20px"><button id="eldersSelectAllGroupNamePopup">${gen.getMsg().roster.email.selectAll}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="eldersCloseGroupNamePopup" class="emailGroupLinkPopupButtonBar">${gen.getMsg().roster.email.done}</button></div></div></script>');
 
     // Inject new link
-    $("#emailGroupdiv").append('<div id="emailGroupdiv"><a id="extractNamesGroupLink_Elders" href="#" class="emailAddress" aria-describedby="ui-tooltip-4">Copy All Names . . .</a>   </div>');
+    $("#emailGroupdiv").append('<div id="emailGroupdiv"><a id="extractNamesGroupLink_Elders" href="#" class="emailAddress" aria-describedby="ui-tooltip-4">Copy all Names . . .</a>   </div>');
 
     // Extract names
     var namesRaw = $('.rosterName'),
